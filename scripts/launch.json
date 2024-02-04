@@ -1,0 +1,16 @@
+{
+    "type": "node",
+    "request": "attach",
+    "sourceMaps": true,
+    "localRoot": "${workspaceFolder}",
+    "remoteRoot": "/data",
+    "name": "debug service",
+    "skipFiles": [
+        "<node_internals>/**"
+    ],
+    "address": "127.0.0.1",
+    "port": 12345,
+    "outFiles": [
+        "/data/packages/**/*.js"
+    ]
+}
