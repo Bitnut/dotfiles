@@ -19,7 +19,18 @@ alias lsa='ls -la'
 # npm
 alias nis='npm install -D '
 alias nr='npm run '
+alias br='bun run '
 alias nrs='npm run start'
+alias brs='bun run start'
+alias nrr='npm run rebuild'
+alias brr='bun run rebuild'
+alias nrw='npm run build-watch'
+alias brw='bun run build-watch'
+alias nrb='npm run build'
+alias brb='bun run build'
+alias nrf='nrr & sh eslintReport.sh'
+alias brf='brr & sh eslintReport.sh'
+alias nlogin='npm login --auth-type=legacy --registry 'https://npm.reolink.dev''
 
 # cd
 alias ..='cd ..'
@@ -29,6 +40,8 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 alias mkcd='foo(){ mkdir -p '$1'; cd '$1'; }; foo '
+alias lsa='ls -la'
+alias sd="cd \$(rg --files | xargs dirname | sort -u | fzf --height 40%)"
 
 # web
 alias es='bash eslintReport.sh'

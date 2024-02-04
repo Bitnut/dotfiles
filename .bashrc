@@ -61,3 +61,64 @@ function ex() {
      fi
 }
 
+# npm search reolink package
+ns() {
+
+    [ -z "$1" ] && echo 'No search pattern supplied' && echo 'usage: ns [pattern]' && return 1;
+
+    REOLINK_REPO_URL=$(grep -o  '//.*reolink.*/:' ~/.npmrc | sed 's/\/:/\//g' | sed 's/\///g')
+
+    npm s --registry 'https://'"$REOLINK_REPO_URL" "$1"
+}
+
+# fzf
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT='80%'
+export FZF_COMPLETION_TRIGGER='\'
+
+fif() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
+
+
+# z.lua
+
+eval "$(lua /home/picher/work/tools/z.lua/z.lua --init bash enhanced once fzf)"
+
+# libvterm-fzf intergration
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/picher/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/picher/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/picher/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/picher/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export NO_AT_BRIDGE=1
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+# deno
+export DENO_INSTALL="/home/picher/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
