@@ -1,0 +1,42 @@
+# Deployment 挂载 ConfigMap 的配置示例
+# 使用 subPath 仅挂载 Snowflake.js 和 SnowflakeSI.js，避免替换整个 lib 目录导致 index.js 等文件丢失
+#
+# 在 containers[0].volumeMounts 中添加:
+#   - name: snowflake
+#     mountPath: /data/node_modules/@litert/uuid/lib/Snowflake.js
+#     subPath: Snowflake.js
+#     readOnly: true
+#   - name: snowflake
+#     mountPath: /data/node_modules/@litert/uuid/lib/SnowflakeSI.js
+#     subPath: SnowflakeSI.js
+#     readOnly: true
+#
+# 在 spec.template.spec.volumes 中添加:
+#   - name: snowflake
+#     configMap:
+#       name: snowflake-files
+#
+# 完整示例:
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-cloud-subscriptions
+spec:
+  template:
+    spec:
+      containers:
+        - name: app
+          volumeMounts:
+            - name: snowflake
+              mountPath: /data/node_modules/@litert/uuid/lib/Snowflake.js
+              subPath: Snowflake.js
+              readOnly: true
+            - name: snowflake
+              mountPath: /data/node_modules/@litert/uuid/lib/SnowflakeSI.js
+              subPath: SnowflakeSI.js
+              readOnly: true
+      volumes:
+        - name: snowflake
+          configMap:
+            name: snowflake-files

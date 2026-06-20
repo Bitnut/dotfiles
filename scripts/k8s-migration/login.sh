@@ -1,0 +1,17 @@
+curl --location --request POST 'https://apis.reolink.dev/v1.0/oauth2/token/' \
+--header 'host: apis.reolink.dev' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'X-PRID: 250711025808359-d7037e49-W9IA5mH' \
+--header 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Sec-Fetch-Dest: empty' \
+--header 'Sec-Fetch-Mode: cors' \
+--header 'Sec-Fetch-Site: same-site' \
+--header 'sec-ch-ua-mobile: ?0' \
+--header 'sec-ch-ua-platform: Windows' \
+--header 'Origin: https://my.reolink.dev' \
+--header 'x-gray-tag: k8s' \
+--header 'Connection: keep-alive' \
+--data-urlencode 'clinet_id=REO-.AJ,HO/L6_TG44T78KB7' \
+--data-urlencode 'code=AwEDAAAAAADXlseNnAEAAICAIwSJDQEA6qQBAAAAAAAqtkm8md9ekzt_D5MAQy7T-ra4rp0AKZPxTx1U6e2xKg' \
+--data-urlencode 'grant_type=session_implicit'

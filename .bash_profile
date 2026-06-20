@@ -1,3 +1,7 @@
+#
+# ~/.bash_profile
+#
+
 AGENT_ENV="$HOME/.ssh/agent_env"
 
 function new_agent {
@@ -21,6 +25,4 @@ else
      new_agent;
 fi
 
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi
+[[ -f ~/.bashrc ]] && . ~/.bashrc

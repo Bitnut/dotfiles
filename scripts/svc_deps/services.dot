@@ -1,0 +1,265 @@
+digraph ServiceDependencies {
+  // 图表设置
+  rankdir="TB";
+  nodesep=0.5;
+  ranksep=1;
+  splines="spline";
+  overlap=false;
+  concentrate=true;
+
+  // 节点样式
+  node [shape=box, style="filled,rounded", fontname="Arial", fontsize=11, color="#AAAAAA", penwidth=0.8];
+  edge [style="solid", color="#666666", penwidth=0.6, arrowsize=0.8];
+
+  // 节点定义
+  "IntCloud" [fillcolor="#D7E9FF", fontname="Arial bold", fontsize=11, style="filled,rounded"];
+  "EventDispatcher" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "EventCollector" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Order" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Payments" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "CloudSubscriptions" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Tax" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "IPLocation" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Device" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "DeviceDataCollector" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "DevicePasslessAuth" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "CloudEventManagement" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "I18n" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "SimCardCore" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "DeviceGeoLocation" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "CloudAIEventApi" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "CloudImageManagement" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Weather" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "IntCloudAdmin" [fillcolor="#D7E9FF", fontname="Arial bold", fontsize=11, style="filled,rounded"];
+  "Remarks" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "CloudSubBill" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "ShopUser" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "MailAddressSymbol" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "User" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "ExportRecords" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Account" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "MailProxy" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "DeviceAirFlags" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "AppFeatures" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "CloudSubscriptionBill" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Storage" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "ShopOrder" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "ShopProduct" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "ShopMarketing" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "MFA" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Auth" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "AccountEvent" [fillcolor="#D7E9FF", fontname="Arial bold", fontsize=11, style="filled,rounded"];
+  "StaffGroup" [fillcolor="#D7E9FF", fontname="Arial bold", fontsize=11, style="filled,rounded"];
+  "UserAgreement" [fillcolor="#D7E9FF", fontname="Arial bold", fontsize=11, style="filled,rounded"];
+  "CloudAssociations" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "SimCardOperatorTelenor" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "Templates" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "SimCardTelenorAccounting" [fillcolor="#E8F0FE", fontname="Arial normal", fontsize=11, style="filled,rounded"];
+  "SimCardRadius" [fillcolor="#D7E9FF", fontname="Arial bold", fontsize=11, style="filled,rounded"];
+  "SimCardConsumer" [fillcolor="#D7E9FF", fontname="Arial bold", fontsize=11, style="filled,rounded"];
+
+  // 创建 EventCollector 的依赖组
+  subgraph cluster_EventCollector {
+    label="EventCollector Dependencies";
+    style="filled,rounded";
+    color="#DDDDDD";
+    fillcolor="#F3F3F3";
+    fontname="Arial";
+    fontsize=10;
+
+    "EventCollector" [fillcolor="#E8F0FE", fontname="Arial bold"];
+    "IntCloud" [fillcolor="#E8F0FE", fontname="Arial"];
+    "IntCloudAdmin" [fillcolor="#E8F0FE", fontname="Arial"];
+    "CloudSubscriptions" [fillcolor="#E8F0FE", fontname="Arial"];
+    "Order" [fillcolor="#E8F0FE", fontname="Arial"];
+    "User" [fillcolor="#E8F0FE", fontname="Arial"];
+    "Account" [fillcolor="#E8F0FE", fontname="Arial"];
+    "MFA" [fillcolor="#E8F0FE", fontname="Arial"];
+    "Auth" [fillcolor="#E8F0FE", fontname="Arial"];
+    "AccountEvent" [fillcolor="#E8F0FE", fontname="Arial"];
+    "StaffGroup" [fillcolor="#E8F0FE", fontname="Arial"];
+    "UserAgreement" [fillcolor="#E8F0FE", fontname="Arial"];
+    "SimCardCore" [fillcolor="#E8F0FE", fontname="Arial"];
+    "SimCardRadius" [fillcolor="#E8F0FE", fontname="Arial"];
+    "SimCardConsumer" [fillcolor="#E8F0FE", fontname="Arial"];
+  }
+
+  // 创建 EventDispatcher 的依赖组
+  subgraph cluster_EventDispatcher {
+    label="EventDispatcher Dependencies";
+    style="filled,rounded";
+    color="#DDDDDD";
+    fillcolor="#F3F3F3";
+    fontname="Arial";
+    fontsize=10;
+
+    "EventDispatcher" [fillcolor="#E8F0FE", fontname="Arial bold"];
+    "Payments" [fillcolor="#E8F0FE", fontname="Arial"];
+    "ShopUser" [fillcolor="#E8F0FE", fontname="Arial"];
+  }
+
+  // 创建 User 的依赖组
+  subgraph cluster_User {
+    label="User Dependencies";
+    style="filled,rounded";
+    color="#DDDDDD";
+    fillcolor="#F3F3F3";
+    fontname="Arial";
+    fontsize=10;
+
+    "User" [fillcolor="#E8F0FE", fontname="Arial bold"];
+  }
+
+  // 创建 MailProxy 的依赖组
+  subgraph cluster_MailProxy {
+    label="MailProxy Dependencies";
+    style="filled,rounded";
+    color="#DDDDDD";
+    fillcolor="#F3F3F3";
+    fontname="Arial";
+    fontsize=10;
+
+    "MailProxy" [fillcolor="#E8F0FE", fontname="Arial bold"];
+  }
+
+  // 创建 Order 的依赖组
+  subgraph cluster_Order {
+    label="Order Dependencies";
+    style="filled,rounded";
+    color="#DDDDDD";
+    fillcolor="#F3F3F3";
+    fontname="Arial";
+    fontsize=10;
+
+    "Order" [fillcolor="#E8F0FE", fontname="Arial bold"];
+  }
+
+  // 依赖关系定义
+  "IntCloud" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "Order" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "Payments" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "CloudSubscriptions" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "Tax" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "IPLocation" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "Device" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "DeviceDataCollector" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "DevicePasslessAuth" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "CloudEventManagement" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "I18n" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "SimCardCore" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "DeviceGeoLocation" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "CloudAIEventApi" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "CloudImageManagement" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloud" -> "Weather" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "CloudSubscriptions" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "SimCardCore" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "Order" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "Remarks" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "CloudSubBill" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "ShopUser" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "MailAddressSymbol" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "IntCloudAdmin" -> "ExportRecords" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "Order" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "Payments" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "Tax" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "SimCardCore" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "Remarks" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "Account" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "MailProxy" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "Device" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "DeviceAirFlags" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "ExportRecords" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "AppFeatures" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "I18n" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "CloudSubscriptionBill" [style="solid", color="#666666", penwidth=0.6];
+  "CloudSubscriptions" -> "DeviceDataCollector" [style="solid", color="#666666", penwidth=0.6];
+  "Order" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "Order" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "Order" -> "Remarks" [style="solid", color="#666666", penwidth=0.6];
+  "Payments" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "Payments" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "Payments" -> "Order" [style="solid", color="#666666", penwidth=0.6];
+  "Payments" -> "MailProxy" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "MailAddressSymbol" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "Storage" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "MailProxy" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "ShopOrder" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "ShopProduct" [style="solid", color="#666666", penwidth=0.6];
+  "ShopUser" -> "ShopMarketing" [style="solid", color="#666666", penwidth=0.6];
+  "User" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "User" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "User" -> "Storage" [style="solid", color="#666666", penwidth=0.6];
+  "Account" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "Account" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "Account" -> "IPLocation" [style="solid", color="#666666", penwidth=0.6];
+  "Account" -> "MFA" [style="solid", color="#666666", penwidth=0.6];
+  "MFA" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "MFA" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "MFA" -> "Auth" [style="solid", color="#666666", penwidth=0.6];
+  "MFA" -> "MailProxy" [style="solid", color="#666666", penwidth=0.6];
+  "Auth" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "Auth" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "AccountEvent" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "AccountEvent" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "AccountEvent" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "AccountEvent" -> "MailProxy" [style="solid", color="#666666", penwidth=0.6];
+  "StaffGroup" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "StaffGroup" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "StaffGroup" -> "Auth" [style="solid", color="#666666", penwidth=0.6];
+  "StaffGroup" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "UserAgreement" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "UserAgreement" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "EventDispatcher" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "CloudAssociations" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "Device" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "DeviceAirFlags" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "User" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "SimCardOperatorTelenor" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "MailProxy" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "Templates" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "CloudSubscriptions" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardCore" -> "CloudSubBill" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardOperatorTelenor" -> "SimCardTelenorAccounting" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardRadius" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardConsumer" -> "SimCardOperatorTelenor" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardConsumer" -> "EventCollector" [style="solid", color="#666666", penwidth=0.6];
+  "SimCardConsumer" -> "CloudAssociations" [style="solid", color="#666666", penwidth=0.6];
+  "EventDispatcher" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "EventCollector" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "Tax" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "IPLocation" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "Device" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "DeviceDataCollector" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "DevicePasslessAuth" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "CloudEventManagement" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "I18n" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "DeviceGeoLocation" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "CloudAIEventApi" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "CloudImageManagement" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "Weather" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "Remarks" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "CloudSubBill" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "MailAddressSymbol" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "ExportRecords" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "MailProxy" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "DeviceAirFlags" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "AppFeatures" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "CloudSubscriptionBill" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "Storage" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "ShopOrder" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "ShopProduct" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "ShopMarketing" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "CloudAssociations" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "Templates" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+  "SimCardTelenorAccounting" [style="filled,rounded,dashed", fillcolor="#D9EAD3", fontcolor="#666666"];
+}

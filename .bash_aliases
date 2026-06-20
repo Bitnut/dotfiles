@@ -1,15 +1,3 @@
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval '$(dircolors -b ~/.dircolors)' || eval '$(dircolors -b)'
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-
 # ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -48,6 +36,7 @@ alias es='bash eslintReport.sh'
 
 # editor
 alias em='emacs &'
+alias dem='emacs --with-profile doom &'
 alias debugem='emacs --debug-init'
 alias ta='tmux attach -t '
 
@@ -58,7 +47,7 @@ alias src='source ~/.bashrc'
 alias cpu='top -o %CPU'
 alias mem='top -o %MEM' # memory
 alias ip='curl icanhazip.com'
-alias install='sudo apt-get install'
-alias update='sudo apt-get update; sudo apt-get upgrade'
+alias install='sudo pacman -S'
+alias update='sudo pacman -Syu'
 alias d='du -sh'
 alias disk='du -h -d 1'
